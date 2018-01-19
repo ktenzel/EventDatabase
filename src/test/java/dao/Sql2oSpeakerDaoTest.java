@@ -1,22 +1,17 @@
 package dao;
 
-import models.Event;
 import models.Speaker;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.sql2o.Sql2o;
-
 import org.sql2o.Connection;
+import org.sql2o.Sql2o;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by Guest on 1/19/18.
- */
-public class Sql2oEventDaoTest {
 
-    private Sql2oEventDao eventDao;
+public class Sql2oSpeakerDaoTest {
+
     private Sql2oSpeakerDao speakerDao;
     private Connection conn;
 
@@ -24,10 +19,9 @@ public class Sql2oEventDaoTest {
     public void setUp() throws Exception {
         String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
         Sql2o sql2o = new Sql2o(connectionString, "", "");
-        eventDao = new Sql2oEventDao(sql2o);
-//        speakerDao = new Sql2oSpeakerDao(sql2o);
+        speakerDao = new Sql2oSpeakerDao(sql2o); //ignore me for now
 
-
+        //keep connection open through entire test so it does not get erased.
         conn = sql2o.open();
     }
 
@@ -36,19 +30,16 @@ public class Sql2oEventDaoTest {
         conn.close();
     }
 
-    public Event setupEvent() {
-        return new Event("name", "description");
-    }
-
     public Speaker setupSpeaker() {
-        return new Speaker("firstName", "lastName", 1, "background");
+        return new Speaker("firstName", "lastName", 1,"background");
     }
 
     @Test
-    public void add_writesToDBAndAssignsId_true() throws Exception {
-        Event event = setupEvent();
-        int originalId = event.getId();
-        eventDao.add(event);
-        assertNotEquals(originalId, event.getId());
+    public void add_placesObjectInDBAssignedId_true() throws Exception {
+        Speaker speaker = setupSpeaker();
+        int originalId = speaker.getId();
+        speakerDao.add(speaker);
+        assertNotEquals(originalId, speaker.getId());
     }
+
 }

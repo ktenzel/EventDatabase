@@ -1,18 +1,17 @@
 package models;
 
-/**
- * Created by Guest on 1/19/18.
- */
 public class Speaker {
 
     private int id;
     private String firstName;
     private String lastName;
+    private int eventId;
     private String background;
 
-    public Speaker(String firstName, String lastName, String background) {
+    public Speaker(String firstName, String lastName, int eventId, String background) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.eventId = eventId;
         this.background = background;
     }
 
@@ -40,6 +39,14 @@ public class Speaker {
         this.lastName = lastName;
     }
 
+    public int getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(int eventId) {
+        this.eventId = eventId;
+    }
+
     public String getBackground() {
         return background;
     }
@@ -56,6 +63,7 @@ public class Speaker {
         Speaker speaker = (Speaker) o;
 
         if (id != speaker.id) return false;
+        if (eventId != speaker.eventId) return false;
         if (!firstName.equals(speaker.firstName)) return false;
         if (!lastName.equals(speaker.lastName)) return false;
         return background.equals(speaker.background);
@@ -66,6 +74,7 @@ public class Speaker {
         int result = id;
         result = 31 * result + firstName.hashCode();
         result = 31 * result + lastName.hashCode();
+        result = 31 * result + eventId;
         result = 31 * result + background.hashCode();
         return result;
     }
