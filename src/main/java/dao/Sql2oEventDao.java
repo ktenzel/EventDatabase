@@ -1,13 +1,11 @@
 package dao;
 
 import models.Event;
+import models.Speaker;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
 
-/**
- * Created by Guest on 1/19/18.
- */
 public class Sql2oEventDao implements EventDao {
     private final Sql2o sql2o;
 

@@ -10,6 +10,12 @@ public class Speaker {
     private String lastName;
     private String background;
 
+    public Speaker(String firstName, String lastName, String background) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.background = background;
+    }
+
     public int getId() {
         return id;
     }

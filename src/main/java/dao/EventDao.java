@@ -1,6 +1,7 @@
 package dao;
 
 import models.Event;
+import java.util.List;
 
 /**
  * Created by Guest on 1/19/18.
@@ -8,7 +9,7 @@ import models.Event;
 public interface EventDao {
 
     //create
-    public add(Event event);
+    void add(Event event);
 
 
     //read
