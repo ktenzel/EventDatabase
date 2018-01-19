@@ -51,4 +51,14 @@ public class Sql2oEventDaoTest {
         eventDao.add(event);
         assertNotEquals(originalId, event.getId());
     }
+
+    @Test
+    public void findById_returnsCorrectInstance_true() throws Exception {
+        Event event = setupEvent();
+        event.setName("NewName");
+        Event secondEvent = setupEvent();
+        eventDao.add(event);
+        eventDao.add(secondEvent);
+        assertEquals("NewName", eventDao.findById(1).getName());
+    }
 }

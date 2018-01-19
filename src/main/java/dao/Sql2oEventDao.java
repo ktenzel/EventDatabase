@@ -26,4 +26,17 @@ public class Sql2oEventDao implements EventDao {
             System.out.println(ex);
         }
     }
+
+    @Override
+    public Event findById(int id) {
+        String sql = "SELECT * FROM events WHERE id = :id";
+        try (Connection con = sql2o.open()){
+            return con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(Event.class);
+        }
+    }
+
+
+
 }
