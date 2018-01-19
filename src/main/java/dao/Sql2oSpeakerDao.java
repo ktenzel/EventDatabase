@@ -75,6 +75,14 @@ public class Sql2oSpeakerDao implements SpeakerDao {
 
     }
 
-
-
+    @Override
+    public void clearAllSpeakers() {
+        String sql = "DELETE FROM speakers";
+        try(Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+    }
 }
