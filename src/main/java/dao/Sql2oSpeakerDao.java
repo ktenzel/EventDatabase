@@ -5,7 +5,9 @@ import models.Speaker;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
 
-import java.sql.Connection;
+import org.sql2o.Connection;
+
+import java.util.List;
 
 public class Sql2oSpeakerDao implements SpeakerDao {
 
@@ -25,6 +27,24 @@ public class Sql2oSpeakerDao implements SpeakerDao {
             speaker.setId(id);
         } catch (Sql2oException ex) {
             System.out.println(ex);
+        }
+    }
+
+    @Override
+    public Speaker findById(int id) {
+        String sql = "SELECT * FROM speakers WHERE id = :id";
+        try(Connection con = sql2o.open()) {
+            return con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(Speaker.class);
+        }
+    }
+    @Override
+    public List<Speaker> getAll() {
+        String sql = "SELECT * FROM speakers";
+        try(Connection con = sql2o.open()) {
+            return con.createQuery(sql)
+                    .executeAndFetch(Speaker.class);
         }
     }
 

@@ -42,4 +42,26 @@ public class Sql2oSpeakerDaoTest {
         assertNotEquals(originalId, speaker.getId());
     }
 
+    @Test
+    public void findByID_returnsCorrectSpeaker_true() throws  Exception {
+        Speaker speaker = setupSpeaker();
+        Speaker secondSpeaker = setupSpeaker();
+        secondSpeaker.setFirstName("John");
+        speakerDao.add(speaker);
+        speakerDao.add(secondSpeaker);
+        assertEquals("John", speakerDao.findById(2).getFirstName());
+    }
+
+    @Test
+    public void getAll_returnsAllSpeakersInDAO_true() throws Exception {
+        Speaker speaker = setupSpeaker();
+        Speaker secondSpeaker = setupSpeaker();
+        Speaker notAdded = setupSpeaker();
+        speakerDao.add(speaker);
+        speakerDao.add(secondSpeaker);
+        assertEquals(2, speakerDao.getAll().size());
+    }
+
+
+
 }
