@@ -62,6 +62,10 @@ public class Sql2oSpeakerDao implements SpeakerDao {
             System.out.println(ex);
         }
     }
+    @Override
+    public void deleteById(int id) {
+
+    }
 
 
 

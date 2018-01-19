@@ -17,6 +17,6 @@ public interface SpeakerDao {
     public void update(int id, String firstName, String lastName, String background);
 
     //delete
-//    public void deleteById(int id);
+    public void deleteById(int id);
 //    public void clearAllSpeakers();
 }
