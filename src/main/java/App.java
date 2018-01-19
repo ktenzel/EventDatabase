@@ -110,7 +110,7 @@ public class App {
             Map<String, Object> model = new HashMap<>();
 
             int eventId = Integer.parseInt(request.params("eventId"));
-            Event events =eventDao.findById(eventId);
+            Event events = eventDao.findById(eventId);
             model.put("events", events);
 
             List<Speaker> speakers = eventDao.getAllSpeakersByEvent(eventId);
@@ -157,5 +157,30 @@ public class App {
             eventDao.update(eventId, newName, newDescription);
 
             return new ModelAndView(model, "update.hbs");
-    }, new HandlebarsTemplateEngine());
+        }, new HandlebarsTemplateEngine());
+
+        get("/events/:eventId/speakers/:speakerId/update", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int eventId = Integer.parseInt(request.params("eventId"));
+            int speakerId = Integer.parseInt(request.params("speakerId"));
+            Event eventToEdit = eventDao.findById(eventId);
+            model.put("eventToEdit", eventToEdit);
+            Speaker speakerToEdit = speakerDao.findById(speakerId);
+            model.put("speakerToEdit", speakerToEdit);
+
+            return new ModelAndView(model, "speaker-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        post("/events/:eventId/speakers/:speakerId/update", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+
+            int speakerId = Integer.parseInt(request.params("speakerId"));
+            String newFirstName = request.queryParams("newFirstName");
+            String newLastName = request.queryParams("newLastName");
+            String newBackground = request.queryParams("newBackground");
+
+            speakerDao.update(speakerId, newFirstName, newLastName, newBackground);
+            return new ModelAndView(model, "update.hbs");
+        }, new HandlebarsTemplateEngine());
+    }
 }
