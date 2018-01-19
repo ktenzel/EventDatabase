@@ -11,9 +11,7 @@ import org.sql2o.Connection;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by Guest on 1/19/18.
- */
+
 public class Sql2oEventDaoTest {
 
     private Sql2oEventDao eventDao;
@@ -60,5 +58,27 @@ public class Sql2oEventDaoTest {
         eventDao.add(event);
         eventDao.add(secondEvent);
         assertEquals("NewName", eventDao.findById(1).getName());
+    }
+
+    @Test
+    public void getAll_returnsAllInstancesOfEventsAddedToDao() throws Exception {
+        Event event = setupEvent();
+        Event secondEvent = setupEvent();
+        Event notAdded = setupEvent();
+        eventDao.add(event);
+        eventDao.add(secondEvent);
+        assertEquals(2, eventDao.getAll().size());
+    }
+
+    @Test
+    public void update_makesChangesToDbVaues_true() throws Exception {
+        Event event = setupEvent();
+        Event secondEvent = setupEvent();
+        eventDao.add(event);
+        eventDao.add(secondEvent);
+        eventDao.update(1, "NewName", "New description");
+        assertEquals("name", eventDao.findById(2).getName());
+        assertEquals("NewName", eventDao.findById(1).getName());
+        assertEquals("New description", eventDao.findById(1).getDescription());
     }
 }
