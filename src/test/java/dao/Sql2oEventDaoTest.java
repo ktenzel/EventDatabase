@@ -81,4 +81,26 @@ public class Sql2oEventDaoTest {
         assertEquals("NewName", eventDao.findById(1).getName());
         assertEquals("New description", eventDao.findById(1).getDescription());
     }
+
+    @Test
+    public void deleteById_removesEntryById_true() throws Exception {
+        Event event = setupEvent();
+        Event secondEvent = setupEvent();
+        eventDao.add(event);
+        eventDao.add(secondEvent);
+        eventDao.deleteById(1);
+        assertEquals(1, eventDao.getAll().size());
+        assertTrue(eventDao.getAll().contains(secondEvent));
+    }
+
+    @Test
+    public void deleteAllEvents_removesAllEvents_true() throws Exception {
+        Event event = setupEvent();
+        Event secondEvent = setupEvent();
+        eventDao.add(event);
+        eventDao.add(secondEvent);
+        assertEquals(2, eventDao.getAll().size());
+        eventDao.deleteAllEvents();
+        assertEquals(0, eventDao.getAll().size());
+    }
 }

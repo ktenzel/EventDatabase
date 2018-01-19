@@ -60,7 +60,7 @@ public class Sql2oEventDao implements EventDao {
 
     @Override
     public void update(int id, String name, String description) {
-        String sql = "UPDATE events SET name = :name, description = :descroipting WHERE id = :id";
+        String sql = "UPDATE events SET name = :name, description = :description WHERE id = :id";
         try (Connection con = sql2o.open()){
             con.createQuery(sql)
                     .addParameter("id", id)

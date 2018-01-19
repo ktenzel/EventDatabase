@@ -62,6 +62,30 @@ public class Sql2oSpeakerDaoTest {
         assertEquals(2, speakerDao.getAll().size());
     }
 
+    @Test
+    public void deleteById_removesSpeakersByID_true() throws Exception {
+        Speaker speaker = setupSpeaker();
+        Speaker secondSpeaker = setupSpeaker();
+        speakerDao.add(speaker);
+        speakerDao.add(secondSpeaker);
+        speakerDao.deleteById(1);
+        assertEquals(1, speakerDao.getAll().size());
+        assertTrue(speakerDao.getAll().contains(secondSpeaker));
+    }
+
+
+    @Test
+    public void clearAllSpeakers_removesAllSpeakersFromDB_true() throws Exception {
+        Speaker speaker = setupSpeaker();
+        Speaker secondSpeaker = setupSpeaker();
+        speakerDao.add(speaker);
+        speakerDao.add(secondSpeaker);
+        assertEquals(2, speakerDao.getAll().size());
+        speakerDao.clearAllSpeakers();
+        assertEquals(0, speakerDao.getAll().size());
+
+    }
+
 
 
 }

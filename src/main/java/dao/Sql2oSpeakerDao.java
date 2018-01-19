@@ -64,7 +64,7 @@ public class Sql2oSpeakerDao implements SpeakerDao {
     }
     @Override
     public void deleteById(int id) {
-        String sql = "DELETE FROM speakers WHERE id :id";
+        String sql = "DELETE FROM speakers WHERE id = :id";
         try(Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("id", id)
