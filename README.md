@@ -19,7 +19,9 @@
 | program takes input from generated home page | Event: "hacakathon" | "Hackathon" |
 | program generates unique id's for each event | Event: "hacakathon", Event "lunch" | id: 1, id: 2 |
 | program generates pages for each inputted event | Event: "hacakathon", Event "lunch" | id: 1, id: 2 |
-| program takes input and adds to description for each Event | Welcome, welcome and  | description:  |
+| program takes input and adds to description for each Event | Welcome, welcome and events schedule | description: welcome and events schedule |
+| program pushes entries to db through specified objects | Event: Welcome, welcome and events schedule | description: welcome and events schedule |
+| program allows for updates to entries in DBs | New welcome , welcome and greetings | Title: New welcome description: welcome and greetings |
 
 
 
