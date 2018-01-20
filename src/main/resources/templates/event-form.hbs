@@ -4,7 +4,8 @@
 {{#if eventToEdit}}
 <div class="centertext">
     <h1>Edit this Event!</h1>
-    <form action="/events/{{editEvent.id}}/update" method="post">
+    <form action="/events/update" method="post">
+        <select name="editEventId" id="editEventId"></select>
         <label for="newName">Event Name</label>
         <input id="newName" name="newName" type="text">
         <label for="newDescription">Description</label>
@@ -16,7 +17,7 @@
 <div class="centertext">
     <h1>Add new event</h1>
 
-    <form action="/events/new" method="post">
+    <form action="/events" method="post">
         <label for="name">Event Name</label>
         <input id="name" name="name" type="text">
         <label for="description">Description</label>
