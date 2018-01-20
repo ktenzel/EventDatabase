@@ -1,0 +1,28 @@
+{{#partial "content"}}
+
+<p>Here are all the presenters speaking during:  {{ event.name }}</p>
+
+
+<ul>
+    {{#each speakers}}
+    <li>
+        <h3>Speaker: {{ firstName }} {{ lastName }}</h3>
+        <p>Background: {{ background }}</p>
+        <br>
+        <a href="/speakers/update">Edit this speaker</a>
+        <br>
+        <a href="/speakers/delete">Delete this speaker</a>
+    </li>
+    {{/each}}
+</ul>
+
+<p>Event Description: {{ event.description }}</p>
+<br>
+<br>
+<a href="/events/:eventId/update">Edit this Event</a>
+<br>
+<a href="/events/delete">DELETE this Event</a>
+
+{{/partial}}
+
+{{> layout.hbs}}

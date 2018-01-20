@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>{{#block "title"}}Star Wars Hackathon{{/block}}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='/app.css'>
+</head>
+<body>
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a href="/">Home</a></li>
+            <li role="presentation" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                Event Menu <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                {{#if events}}
+                {{#each events}}
+                <li><a href="/events/{{id}}">{{name}}</a></li>
+                {{/each}}
+                <li><a href="/events/new">Add an Event</a></li>
+
+                {{else}}
+                <li><a href="/events/new">Add an Event</a></li>
+                {{/if}}
+            </ul>
+        </li>
+    </ul>
+
+
+
+
+
+
+
+<div class="jumbotron">
+    <h1>Hackathon</h1>
+</div>
+<div class="container">
+    <div class="col-md-12">
+        {{#block "content"}}
+        {{/block}}
+    </div>
+</div>
+
+{{#block "footer"}}
+<footer class="footer">
+    <div class="container">
+        <div class="centertext">
+            <br>
+            <p><span class="event"><a href="/events/new" id="right">ADD EVENT</a></span>
+                <br><br>
+                <span class="deleteall"><a href="/events/delete" id="left">DELETE ALL EVENTS</a></span></p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
+{{/block}}

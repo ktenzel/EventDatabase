@@ -1,0 +1,56 @@
+{{#partial "content"}}
+
+{{#if speakerToEdit}}
+<form action="/speaker/update" method="post">
+    <h1>Edit this Speaker</h1>
+    <select id="speakerToEditId" name="speakerToEdit">
+        {{#each speakers}}
+        <option value="{{id}}">{{firstName}} {{lastName}}</option>
+        {{/each}}
+    </select>
+    <br>
+    <label for="newFirstName">Edit Speaker's first name</label>
+    <br>
+    <input id="newFirstName" name="newFirstName" type="text" placeholder="Enter new first name">
+    <label for="newLastName">Edit Speaker's Last name</label>
+    <br>
+    <input id="newLastName" name="newLastName" type="text" placeholder="Enter new last name">
+    <label for="newBackground">Edit Speaker's background</label>
+    <br>
+    <input id="newBackground" name="newBackground" type="text" placeholder="Enter new background">
+    <br>
+    <label for="eventId">Update the Speaker for Event:</label>
+    <select id="eventId" name="eventId">
+        {{#each event}}
+        <option value="{{id}}">{{name}}</option>
+        {{/each}}
+    </select>
+    <p>Don't see the right event?<a href="/events/new">Add a new Event</a></p>
+
+    {{else}}
+
+    <h2>Add a new Speaker</h2>
+
+    <form action="/speakers/new" method="post">
+        {{#if events}}
+        <label for="firstName">Speaker's first name</label>
+        <input id="firstName" name="firstName" type="text" placeholder="Enter first name">
+        <br>
+        <label for="lastName">Speaker's first name</label>
+        <input id="lastName" name="lastName" type="text" placeholder="Enter last name">
+        <br>
+        <label for="background">Speaker's first name</label>
+        <input id="background" name="background" type="text" placeholder="Enter background">
+        <label for="eventId">Add this Speaker to the event:</label>
+        <select id="eventId" name="eventId">
+            {{#each events}}
+            <option values="{{id}}">{{name}}</option>
+            {{/each}}
+        </select>
+        <p>Don't see the right Event?<a href="/events/new">Add a new one</a></p>
+        {{/if}}
+
+        <button type="submit">Add Speaker</button>
+    </form>
+    {{/partial}}
+    {{> layout.hbs}}
