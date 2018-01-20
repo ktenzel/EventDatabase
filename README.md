@@ -1,7 +1,5 @@
 # _EVENT HACKATHON DATABASE_
 
-<iframe width="1152" height="698" src="http://play.starwars.com/html5/starwars_crawlcreator/?cid=null" frameborder="0" scrolling="no"></iframe>
-
 #### This program will set up the schedule for a star wars hackathon and let users add events to that schedule.
 
 #### By: _**Kyle Tenzeldam**_
