@@ -19,7 +19,7 @@
 | program takes input from generated home page | Event: "hacakathon" | "Hackathon" |
 | program generates unique id's for each event | Event: "hacakathon", Event "lunch" | id: 1, id: 2 |
 | program generates pages for each inputted event | Event: "hacakathon", Event "lunch" | id: 1, id: 2 |
-| program takes input and adds to description for each Team | From Portland, OR specializing it data visualization | description: Portland, OR specializing it data visualization |
+| program takes input and adds to description for each Event | Welcome, welcome and  | description:  |
 
 
 

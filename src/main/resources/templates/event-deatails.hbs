@@ -1,6 +1,6 @@
 {{#partial "content"}}
 
-<p>Here are all the presenters speaking during:  {{ event.name }}</p>
+<p>Here are all the presenters speaking during:  {{ events.name }}</p>
 
 
 <ul>
@@ -16,7 +16,7 @@
     {{/each}}
 </ul>
 
-<p>Event Description: {{ event.description }}</p>
+<p>Event Description: {{ events.description }}</p>
 <br>
 <br>
 <a href="/events/:eventId/update">Edit this Event</a>
