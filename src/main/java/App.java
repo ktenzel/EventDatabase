@@ -72,7 +72,9 @@ public class App {
         //get: show a form to update an event
         get("/events/update", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
+
             model.put("editEvent", true);
+
             List<Event> allEvents = eventDao.getAll();
             model.put("events", allEvents);
 
@@ -83,7 +85,7 @@ public class App {
         post("/events/update", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
 
-            int idOfEventToEdit = Integer.parseInt(request.params("editEventId"));
+            int idOfEventToEdit = Integer.parseInt(request.queryParams("editEventId"));
             String newEventName = request.queryParams("newEventName");
             String newDescription = request.queryParams("newDescription");
             eventDao.update(eventDao.findById(idOfEventToEdit).getId(), newEventName, newDescription);
@@ -158,7 +160,7 @@ public class App {
             String firstName = request.queryParams("firstName");
             String lastName = request.queryParams("lastName");
             String background = request.queryParams("background");
-            int eventId = Integer.parseInt(request.params("eventId"));
+            int eventId = Integer.parseInt(request.queryParams("eventId"));
 
             Speaker newSpeaker = new Speaker(firstName, lastName, eventId, background);
             speakerDao.add(newSpeaker);

@@ -1,6 +1,6 @@
 {{#partial "content"}}
 
-{{#if speakerToEdit}}
+{{#if editSpeaker}}
 <form action="/speakers/update" method="post">
     <h1>Edit this Speaker</h1>
     <select id="speakerToEditId" name="speakerToEdit">
@@ -20,7 +20,6 @@
     <input id="newBackground" name="newBackground" type="text" placeholder="Enter new background">
     <br>
     <label for="eventId">Update the Speaker for Event:</label>
-    <select id="eventId" name="eventId">
         {{#each event}}
         <option value="{{id}}">{{name}}</option>
         {{/each}}
@@ -43,13 +42,17 @@
         <br>
         <label for="background">Speaker's first name</label>
         <input id="background" name="background" type="text" placeholder="Enter background">
+
         <label for="eventId">Add this Speaker to the event:</label>
         <select id="eventId" name="eventId">
-            {{#each events}}
-            <option values="{{id}}">{{name}}</option>
-            {{/each}}
+
+        {{#each events}}
+        <option value="{{id}}">{{name}}</option>
+        {{/each}}
         </select>
         {{else}}
+
+
         <p>Don't see the right Event?<a href="/events/new">Add a new one</a></p>
         {{/if}}
         {{/if}}
