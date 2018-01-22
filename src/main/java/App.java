@@ -254,10 +254,18 @@ public class App {
             int newEventToEdit = Integer.parseInt(request.params("eventId"));
             int newSpeakerToEdit = Integer.parseInt(request.params("speakerId"));
 
-            Speaker editSpeaker = speakerDao.findById(newSpeakerToEdit)
+            Speaker editSpeaker = speakerDao.findById(newSpeakerToEdit);
             speakerDao.update(newEventToEdit, newFirstName, newLastName, newBackground);
 
             return new ModelAndView(model, "update.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        get("/events/:eventId/speakers/:speakerId/delete", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfSpeakerToDelete = Integer.parseInt(request.params("speakerId"));
+            Speaker deleteSpeaker = speakerDao.findById(idOfSpeakerToDelete);
+            speakerDao.deleteById(idOfSpeakerToDelete);
+            return new ModelAndView(model, "delete.hbs");
         }, new HandlebarsTemplateEngine());
     }
 }
