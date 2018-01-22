@@ -1,20 +1,15 @@
-import com.sun.java.swing.plaf.motif.MotifBorders;
-import com.sun.org.apache.xpath.internal.operations.Mod;
-import dao.Sql2oEventDao;
-import dao.Sql2oSpeakerDao;
-import org.omg.CORBA.INTERNAL;
-import org.omg.PortableInterceptor.INACTIVE;
-import org.sql2o.Sql2o;
-import models.Speaker;
-import models.Event;
-import spark.ModelAndView;
-import spark.template.handlebars.HandlebarsTemplateEngine;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.ObjDoubleConsumer;
 
+import dao.Sql2oSpeakerDao;
+import dao.Sql2oEventDao;
+
+import models.Event;
+import models.Speaker;
+import org.sql2o.Sql2o;
+import spark.ModelAndView;
+import spark.template.handlebars.HandlebarsTemplateEngine;
 import static spark.Spark.*;
 
 public class App {
@@ -77,12 +72,9 @@ public class App {
         //get: show a form to update an event
         get("/events/update", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-
-            model.put("events", true);
-//            int eventId = Integer.parseInt(request.params("eventId"));
-//            Event eventToEdit = eventDao.findById(eventId);
-            List<Event> eventToEdit = eventDao.getAll();
-            model.put("events", eventToEdit);
+            model.put("editEvent", true);
+            List<Event> allEvents = eventDao.getAll();
+            model.put("events", allEvents);
 
             return new ModelAndView(model, "event-form.hbs");
         }, new HandlebarsTemplateEngine());
@@ -91,10 +83,10 @@ public class App {
         post("/events/update", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
 
-            int eventIdToEdit = Integer.parseInt(request.params("editEventId"));
-            String newName = request.queryParams("newName");
+            int idOfEventToEdit = Integer.parseInt(request.params("editEventId"));
+            String newEventName = request.queryParams("newEventName");
             String newDescription = request.queryParams("newDescription");
-            eventDao.update(eventDao.findById(eventIdToEdit).getId(), newName, newDescription);
+            eventDao.update(eventDao.findById(idOfEventToEdit).getId(), newEventName, newDescription);
 
             List<Event> events = eventDao.getAll();
             model.put("events", events);

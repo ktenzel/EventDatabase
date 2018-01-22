@@ -1,18 +1,20 @@
 {{#partial "content"}}
 
 
-{{#if eventToEdit}}
+{{#if editEvent}}
 <div class="centertext">
     <h1>Edit this Event!</h1>
     <form action="/events/update" method="post">
-        <select name="editEventId" id="editEventId"></select>
-        <label for="newName">Event Name</label>
-        <input id="newName" name="newName" type="text">
+        <select class="selector" name="editEventId" id="editEventId">
+        {{#each events}}
+        <option value="{{id}}">{{name}}</option>
+        {{/each}}
+        </select>
+        <label for="name">Event Name</label>
+        <input id="newEventName" name="newEventName" type="text">
         <label for="newDescription">Description</label>
         <input id="newDescription" name="newDescription" type="text">
-        <button type="submit" class="btn btn-default">Update Event</button>
-    </form>
-</div>
+
 {{else}}
 <div class="centertext">
     <h1>Add new event</h1>
@@ -22,11 +24,11 @@
         <input id="name" name="name" type="text">
         <label for="description">Description</label>
         <input id="description" name="description" type="text">
-
-        <button type="submit" class="btn btn-default">Add Event</button>
-        <br>
+        {{/if}}
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
 </div>
-{{/if}}
+
 {{/partial}}
 
 {{>layout.hbs}}
