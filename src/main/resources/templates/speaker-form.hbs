@@ -1,7 +1,7 @@
 {{#partial "content"}}
 
 {{#if speakerToEdit}}
-<form action="/speaker/update" method="post">
+<form action="/speakers/update" method="post">
     <h1>Edit this Speaker</h1>
     <select id="speakerToEditId" name="speakerToEdit">
         {{#each speakers}}
@@ -25,6 +25,8 @@
         <option value="{{id}}">{{name}}</option>
         {{/each}}
     </select>
+    <button type="submit">Update Speaker</button>
+</form>
     <p>Don't see the right event?<a href="/events/new">Add a new Event</a></p>
 
     {{else}}
@@ -47,9 +49,10 @@
             <option values="{{id}}">{{name}}</option>
             {{/each}}
         </select>
+        {{else}}
         <p>Don't see the right Event?<a href="/events/new">Add a new one</a></p>
         {{/if}}
-
+        {{/if}}
         <button type="submit">Add Speaker</button>
     </form>
     {{/partial}}

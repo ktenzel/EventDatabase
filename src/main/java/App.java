@@ -167,41 +167,6 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //read
-        //get: show all events
-        get("/events", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
-            int idOfEventToFind = Integer.parseInt(request.params("eventId"));
-
-
-            List<Event> events = eventDao.getAll();
-            model.put("events", events);
-
-
-            Event foundEvent = eventDao.findById(idOfEventToFind);
-            model.put("events", foundEvent);
-            List<Speaker> allSpeakersByEvent = eventDao.getAllSpeakersByEvent(idOfEventToFind);
-            model.put("speakers", allSpeakersByEvent);
-
-            return new ModelAndView(model, "events-details.hbs");
-        }, new HandlebarsTemplateEngine());
-
-
-
-
         //get: a single event and list of speakers
         get("/events/:eventId/speakers/:speakerId", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
@@ -212,11 +177,6 @@ public class App {
 
             return new ModelAndView(model, "speaker-detail.hbs");
         }, new HandlebarsTemplateEngine());
-
-        //update
-
-
-
 
 
         get("/speakers/update", (request, response) -> {
@@ -232,6 +192,7 @@ public class App {
             model.put("editSpeaker", true);
             return new ModelAndView(model, "speaker-form.hbs");
         }, new HandlebarsTemplateEngine());
+
 
         post("/speakers/update", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
@@ -259,5 +220,44 @@ public class App {
             speakerDao.deleteById(idOfSpeakerToDelete);
             return new ModelAndView(model, "delete.hbs");
         }, new HandlebarsTemplateEngine());
+
+
+
+
+
+        //read
+        //get: show all events
+//        get("/events", (request, response) -> {
+//            Map<String, Object> model = new HashMap<>();
+//            int idOfEventToFind = Integer.parseInt(request.params("eventId"));
+//
+//
+//            List<Event> events = eventDao.getAll();
+//            model.put("events", events);
+//
+//
+//            Event foundEvent = eventDao.findById(idOfEventToFind);
+//            model.put("events", foundEvent);
+//            List<Speaker> allSpeakersByEvent = eventDao.getAllSpeakersByEvent(idOfEventToFind);
+//            model.put("speakers", allSpeakersByEvent);
+//
+//            return new ModelAndView(model, "events-details.hbs");
+//        }, new HandlebarsTemplateEngine());
+
+
+
+
+
+        //update
+
+
+
+
+
+
+
+
+
+
     }
 }
