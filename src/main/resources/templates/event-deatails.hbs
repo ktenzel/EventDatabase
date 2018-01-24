@@ -9,9 +9,9 @@
         <h3>Speaker: {{ firstName }} {{ lastName }}</h3>
         <p>Background: {{ background }}</p>
         <br>
-        <a href="/speakers/update">Edit this speaker</a>
+        <a href="/events/{{id}}/speakers/{{id}}/update">Edit this speaker</a>
         <br>
-        <a href="/speakers/delete">Delete this speaker</a>
+        <a href="/events/{{id}}/speakers/{{id}}/delete">Delete this speaker</a>
     </li>
     {{/each}}
 </ul>
