@@ -6,7 +6,7 @@
 <p>{{ speakers.background }}</p>
 
 <p> <a href="/events/:eventId/speakers/:speakerId/update">Edit this speaker</a><br>
-    <a href="/events/:eventId/speakers/:speakerId/delete">DELETE this speaker (no undo)</a>
+    <a href="/events/{{speakers.eventId}}/speakers/{{speakers.id}}/delete">DELETE this speaker (no undo)</a>
 </p>
 
 {{/partial}}
