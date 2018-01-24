@@ -1,12 +1,12 @@
 {{#partial "content"}}
 
 <h1>Speaker</h1>
-<p>{{ speaker.id.firstName }} {{ lastName }}</p>
+<p>{{ speakers.firstName }} {{ speakers.lastName }}</p>
 <h3>Background</h3>
-<p>{{ background }}</p>
+<p>{{ speakers.background }}</p>
 
-<p> <a href="/speakers/update">Edit this speaker</a><br>
-    <a href="/speakers/delete">DELETE this speaker (no undo)</a>
+<p> <a href="/events/:eventId/speakers/:speakerId/update">Edit this speaker</a><br>
+    <a href="/events/:eventId/speakers/:speakerId/delete">DELETE this speaker (no undo)</a>
 </p>
 
 {{/partial}}
