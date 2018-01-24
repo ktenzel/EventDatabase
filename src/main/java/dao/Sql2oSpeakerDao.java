@@ -49,15 +49,17 @@ public class Sql2oSpeakerDao implements SpeakerDao {
     }
 
     @Override
-    public void update(int id, String firstName, String lastName, String background) {
-        String sql = "UPDATE speakers SET firstName = :firstName, lastName = :lastName, background = :background WHER id = :id";
+    public void update(int id, String newFirstName, String newLastName, String newBackground, int newEventId) {
+        String sql = "UPDATE speakers SET (firstName, lastName, background, eventId) = (:firstName, :lastName, :background, :eventId) WHERE id = :id";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
+
+                    .addParameter("firstName", newFirstName)
+                    .addParameter("lastName", newLastName)
+                    .addParameter("background", newBackground)
+                    .addParameter("eventId", newEventId)
                     .addParameter("id", id)
-                    .addParameter("firstName", firstName)
-                    .addParameter("lastName", lastName)
-                    .addParameter("background", background)
-                    .executeAndFetch(Speaker.class);
+                    .executeUpdate();
         } catch (Sql2oException ex) {
             System.out.println(ex);
         }

@@ -206,11 +206,11 @@ public class App {
             String newFirstName = request.queryParams("newFirstName");
             String newLastName = request.queryParams("newLastName");
             String newBackground = request.queryParams("newBackground");
-            int newEventToEdit = Integer.parseInt(request.params("eventId"));
-            int newSpeakerToEdit = Integer.parseInt(request.params("speakerId"));
+            int newEventToEdit = Integer.parseInt(request.queryParams("eventId"));
+            int speakerToEditId = Integer.parseInt(request.queryParams("speakerToEditId"));
 
-            Speaker editSpeaker = speakerDao.findById(newSpeakerToEdit);
-            speakerDao.update(newEventToEdit, newFirstName, newLastName, newBackground);
+            Speaker editSpeaker = speakerDao.findById(speakerToEditId);
+            speakerDao.update(speakerToEditId, newFirstName, newLastName, newBackground, newEventToEdit);
 
             return new ModelAndView(model, "update.hbs");
         }, new HandlebarsTemplateEngine());

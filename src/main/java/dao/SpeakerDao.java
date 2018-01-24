@@ -14,7 +14,7 @@ public interface SpeakerDao {
     public List<Speaker> getAll(); //return all Speakers
 
     //update
-    public void update(int id, String firstName, String lastName, String background);
+    public void update(int id, String newFirstName, String newLastName, String newBackground, int newEventId);
 
     //delete
     public void deleteById(int id); // deletes speakers by id

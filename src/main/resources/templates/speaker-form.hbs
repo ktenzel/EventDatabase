@@ -3,24 +3,24 @@
 {{#if editSpeaker}}
 <form action="/speakers/update" method="post">
     <h1>Edit this Speaker</h1>
-    <select id="speakerToEditId" name="speakerToEdit">
+    <select id="speakerToEditId" name="speakerToEditId">
         {{#each speakers}}
         <option value="{{id}}">{{firstName}} {{lastName}}</option>
         {{/each}}
     </select>
     <br>
     <label for="newFirstName">Edit Speaker's first name</label>
-    <br>
     <input id="newFirstName" name="newFirstName" type="text" placeholder="Enter new first name">
+    <br>
     <label for="newLastName">Edit Speaker's Last name</label>
-    <br>
     <input id="newLastName" name="newLastName" type="text" placeholder="Enter new last name">
-    <label for="newBackground">Edit Speaker's background</label>
     <br>
+    <label for="newBackground">Edit Speaker's background</label>
     <input id="newBackground" name="newBackground" type="text" placeholder="Enter new background">
     <br>
     <label for="eventId">Update the Speaker for Event:</label>
-        {{#each event}}
+    <select id="eventId" name="eventId">
+        {{#each events}}
         <option value="{{id}}">{{name}}</option>
         {{/each}}
     </select>
@@ -37,10 +37,10 @@
         <label for="firstName">Speaker's first name</label>
         <input id="firstName" name="firstName" type="text" placeholder="Enter first name">
         <br>
-        <label for="lastName">Speaker's first name</label>
+        <label for="lastName">Speaker's last name</label>
         <input id="lastName" name="lastName" type="text" placeholder="Enter last name">
         <br>
-        <label for="background">Speaker's first name</label>
+        <label for="background">Speaker's background</label>
         <input id="background" name="background" type="text" placeholder="Enter background">
 
         <label for="eventId">Add this Speaker to the event:</label>

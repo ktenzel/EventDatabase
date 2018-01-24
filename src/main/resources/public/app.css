@@ -30,6 +30,12 @@ body {
    color: gold;
     }
 
+button, select {
+background-color: gold;
+color: black;
+}
+
+
 input {
   border: 3px solid gold;
   background-color: black;
