@@ -6,11 +6,12 @@
 
 
 ## Description
-    This program creates an event calendar for an upcoming hackathon and stores info for each event and corresponding speakers in a database.
+    This program creates an event calendar for an upcoming hackathon and stores info for each event and corresponding speakers in a database. This application creates a multi object based web app to set a schedule for a Star Wars Hackathon. 
 
 ## Setup/Installment Requirements
     JAVA
     IntelliJ
+    Spark
 
 ## Specifications
 
